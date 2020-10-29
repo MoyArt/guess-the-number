@@ -1,46 +1,55 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, Alert, Dimensions } from 'react-native';
-import Card from '../Components/Card/Card';
-import Input from '../Components/Input/Input';
-import MainButton from '../Components/MainButton/MainButton';
-import ColorPallet from '../constants/colorPallet';
-import NumberContainer from '../Components/NumberContainer/NumberContainer';
-import BodyText from '../Components/BodyText/BodyText';
+import React, { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  Button,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Alert,
+  Dimensions,
+} from "react-native";
+import Card from "../Components/Card/Card";
+import Input from "../Components/Input/Input";
+import MainButton from "../Components/MainButton/MainButton";
+import ColorPallet from "../constants/colorPallet";
+import NumberContainer from "../Components/NumberContainer/NumberContainer";
+import BodyText from "../Components/BodyText/BodyText";
 
-const StartGameScreen = props => {
+const StartGameScreen = (props) => {
   const { onStartGame } = props;
-  const [enteredValue, setEnteredValue] = useState('');
+  const [enteredValue, setEnteredValue] = useState("");
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
 
-  const numberInputHandler = inputText => {
-    setEnteredValue(inputText.replace(/[^0-9]/g, ''));
+  const numberInputHandler = (inputText) => {
+    setEnteredValue(inputText.replace(/[^0-9]/g, ""));
   };
 
   const resetInputHandler = () => {
-    setEnteredValue('');
+    setEnteredValue("");
     setConfirmed(false);
     Keyboard.dismiss();
-  }
+  };
 
   const confirmedInputHandler = () => {
     const chosenNumber = parseInt(enteredValue);
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
-      Alert.alert(
-        'Invalid Number',
-        'Please Choose a Number from 1 to 99',
-        [{text:'OK', style: 'destructive', onPress: resetInputHandler}]);
-      return
+      Alert.alert("Invalid Number", "Please Choose a Number from 1 to 99", [
+        { text: "OK", style: "destructive", onPress: resetInputHandler },
+      ]);
+      return;
     }
     setConfirmed(true);
     setSelectedNumber(chosenNumber);
-    setEnteredValue('');
-  }
+    setEnteredValue("");
+  };
 
   const confirmedComponent = (
     <Card style={styles.confirmedComponent}>
       <NumberContainer>The entered Number is: {selectedNumber}</NumberContainer>
-      <MainButton onPress={() => onStartGame(selectedNumber)}>Start Game</MainButton>
+      <MainButton onPress={() => onStartGame(selectedNumber)}>
+        Start Game
+      </MainButton>
     </Card>
   );
 
@@ -55,19 +64,27 @@ const StartGameScreen = props => {
           <Input
             style={styles.input}
             blurOnSubmit
-            autoCapitalize='none'
+            autoCapitalize="none"
             autoCorrect={false}
-            keyboardType='numeric'
+            keyboardType="numeric"
             maxLength={2}
             onChangeText={numberInputHandler}
             value={enteredValue}
           />
           <View style={styles.buttonContainer}>
             <View style={styles.button}>
-              <Button title="Reset" color={ColorPallet.accent} onPress={resetInputHandler} />
+              <Button
+                title="Reset"
+                color={ColorPallet.accent}
+                onPress={resetInputHandler}
+              />
             </View>
             <View style={styles.button}>
-              <Button title="Confirm" color={ColorPallet.primary} onPress={confirmedInputHandler} />
+              <Button
+                title="Confirm"
+                color={ColorPallet.primary}
+                onPress={confirmedInputHandler}
+              />
             </View>
           </View>
         </Card>
@@ -75,45 +92,45 @@ const StartGameScreen = props => {
       </View>
     </TouchableWithoutFeedback>
   );
-}
+};
 
 const styles = StyleSheet.create({
   mainWrapper: {
     flex: 1,
     padding: 10,
-    alignItems: 'center',
+    alignItems: "center",
   },
   title: {
     fontSize: 20,
     marginVertical: 10,
   },
   inputContainer: {
-    width: '80%',
-    maxWidth: '95%',
+    width: "80%",
+    maxWidth: "95%",
     minWidth: 300,
-    alignItems: 'center',
+    alignItems: "center",
     marginVertical: 25,
   },
   buttonContainer: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
     paddingHorizontal: 15,
   },
   button: {
-    width: Dimensions.get('window').width / 4,
+    width: Dimensions.get("window").width / 4,
   },
   input: {
     width: 50,
-    textAlign: 'center',
+    textAlign: "center",
   },
   confirmedComponent: {
     width: 300,
-    maxWidth: '80%',
+    maxWidth: "80%",
     marginVertical: 20,
     padding: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
