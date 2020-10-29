@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Button,
   TouchableWithoutFeedback,
+  ImageBackground,
   Keyboard,
   Alert,
   Dimensions,
@@ -57,44 +58,50 @@ const StartGameScreen = (props) => {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.mainWrapper}>
-        <BodyText style={styles.title}>Start a new game!</BodyText>
-        <Card style={styles.inputContainer}>
-          <BodyText>Select a Number</BodyText>
-          <Input
-            style={styles.input}
-            blurOnSubmit
-            autoCapitalize="none"
-            autoCorrect={false}
-            keyboardType="numeric"
-            maxLength={2}
-            onChangeText={numberInputHandler}
-            value={enteredValue}
-          />
-          <View style={styles.buttonContainer}>
-            <View style={styles.button}>
-              <Button
-                title="Reset"
-                color={ColorPallet.accent}
-                onPress={resetInputHandler}
-              />
+      <ImageBackground source={require('../assets/images/rainingBackground.gif')} style={styles.backgroundImage} >
+        <View style={styles.mainWrapper}>
+          <BodyText style={styles.title}>Start a new game!</BodyText>
+          <Card style={styles.inputContainer}>
+            <BodyText>Select a Number</BodyText>
+            <Input
+              style={styles.input}
+              blurOnSubmit
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardType="numeric"
+              maxLength={2}
+              onChangeText={numberInputHandler}
+              value={enteredValue}
+            />
+            <View style={styles.buttonContainer}>
+              <View style={styles.button}>
+                <Button
+                  title="Reset"
+                  color={ColorPallet.accent}
+                  onPress={resetInputHandler}
+                />
+              </View>
+              <View style={styles.button}>
+                <Button
+                  title="Confirm"
+                  color={ColorPallet.primary}
+                  onPress={confirmedInputHandler}
+                />
+              </View>
             </View>
-            <View style={styles.button}>
-              <Button
-                title="Confirm"
-                color={ColorPallet.primary}
-                onPress={confirmedInputHandler}
-              />
-            </View>
-          </View>
-        </Card>
-        {confirmedOutput}
-      </View>
+          </Card>
+          {confirmedOutput}
+        </View>
+      </ImageBackground>
     </TouchableWithoutFeedback>
   );
 };
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+  },
   mainWrapper: {
     flex: 1,
     padding: 10,
