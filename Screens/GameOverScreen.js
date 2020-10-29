@@ -20,7 +20,7 @@ const GameOverScreen = (props) => {
         <Title>The Game Is Over</Title>
         <View style={styles.imageContainer}>
           <Image
-            source={require("../assets/images/success.png")}
+            source={require("../assets/images/ninjaWin.gif")}
             style={styles.image}
             resizeMode="cover"
           />
@@ -48,13 +48,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 30,
   },
   imageContainer: {
     borderRadius: (Dimensions.get("window").width * 0.7) / 2,
     borderWidth: 3,
     borderColor: "#666666",
-    width: Dimensions.get("window").width * 0.7,
-    height: Dimensions.get("window").width * 0.7,
+    width: Dimensions.get("window").width * 0.6,
+    height: Dimensions.get("window").width * 0.6,
     overflow: "hidden",
     marginVertical: Dimensions.get("window").height / 30,
   },
@@ -64,7 +65,8 @@ const styles = StyleSheet.create({
   },
   textWrapper: {
     width: "80%",
-    marginVertical: 15,
+    marginTop: 15,
+    marginBottom: 30,
   },
   resultText: {
     textAlign: "center",
