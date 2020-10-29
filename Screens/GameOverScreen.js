@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, Image, Text, Dimensions, ScrollView } from 'react-native';
-
 import BodyText from '../Components/BodyText/BodyText';
 import Title from '../Components/Title/Title';
 import MainButton from '../Components/MainButton/MainButton';
@@ -15,7 +14,6 @@ const GameOverScreen = props => {
         <View style={styles.imageContainer}>
           <Image
             source={require('../assets/images/success.png')}
-            //source={{uri: ''https://96a5aff2-a-62cb3a1a-s-sites.googlegroups.com/site/rosesreadingideas/home/pecos-bill/pecos%20bill.jpg?attachauth=ANoY7coB901dxLt9u_ApdwD4hd84CrbaYOCft6KYwv2i9r91O5nr0Ow_Z3k50-07vvH62OMfhjM2asTs3_x3KyJ4sUXxidxbeyM5cp-v9ilzGUrckYmQ6_B6APRiyS_p_8vG4mgju2O5cHfjLYXuXnBD6LnLooEw4DdXOakQhAN0l5HtoAE8IaXDxcrpaVDI6-LhhOHMV2lUamu4Y6MFWYfbZUvbnx08yTAogohIuty82WQjZ1N_xpVVUx2Rn3eFod5JuqErnFee&attredirects=0}}
             style={styles.image}
             resizeMode="cover"
           />
@@ -33,6 +31,11 @@ const GameOverScreen = props => {
   );
 }
 
+/**
+* @name styles
+* @description Create App design style rules.
+* @param {Object} Object containing the style rules.
+*/
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
