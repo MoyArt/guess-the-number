@@ -5,6 +5,7 @@ import {
   Text,
   Alert,
   ScrollView,
+  ImageBackground,
   Dimensions,
 } from "react-native";
 import Card from "../Components/Card/Card";
@@ -27,7 +28,7 @@ const generateRandomBetween = (min, max, exclude) => {
 const renderValue = (item, index, roundNumber) => {
   return (
     <View key={index} style={styles.listItem}>
-      <BodyText>#{roundNumber}</BodyText>
+      <BodyText style={styles.listItemNumber}>#{roundNumber}</BodyText>
       <Text>{item}</Text>
     </View>
   );
@@ -69,25 +70,27 @@ const GameScreen = (props) => {
     setPastGuesses((currentPastGuesses) => [nextNumber, ...currentPastGuesses]);
   };
   return (
-    <View style={styles.screen}>
-      <BodyText>Opponent's Guess</BodyText>
-      <NumberContainer>{currentGuess}</NumberContainer>
-      <Card style={styles.buttonContainer}>
-        <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
-          <Ionicons name="md-remove" size={24} color="#0D1B2A" />
-        </MainButton>
-        <MainButton onPress={nextGuessHandler.bind(this, "higher")}>
-          <Ionicons name="md-add" size={24} color="#0D1B2A" />
-        </MainButton>
-      </Card>
-      <View style={styles.listContainer}>
-        <ScrollView contentContainerStyle={styles.list}>
-          {pastGuesses.map((guess, index) =>
-            renderValue(guess, index, pastGuesses.length - index)
-          )}
-        </ScrollView>
+    <ImageBackground source={require('../assets/images/rainingBackground.gif')} style={styles.backgroundImage} >
+      <View style={styles.screen}>
+        <BodyText>Opponent's Guess</BodyText>
+        <NumberContainer>{currentGuess}</NumberContainer>
+        <Card style={styles.buttonContainer}>
+          <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
+            <Ionicons name="md-remove" size={24} color="#0D1B2A" />
+          </MainButton>
+          <MainButton onPress={nextGuessHandler.bind(this, "higher")}>
+            <Ionicons name="md-add" size={24} color="#0D1B2A" />
+          </MainButton>
+        </Card>
+        <View style={styles.listContainer}>
+          <ScrollView contentContainerStyle={styles.list}>
+            {pastGuesses.map((guess, index) =>
+              renderValue(guess, index, pastGuesses.length - index)
+            )}
+          </ScrollView>
+        </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -97,6 +100,10 @@ const GameScreen = (props) => {
  * @param {Object} Object containing the style rules.
  */
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+  },
   screen: {
     flex: 1,
     padding: 10,
@@ -120,14 +127,19 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   listItem: {
-    borderColor: "#ccc",
+    borderColor: "#FAF33E",
     borderWidth: 1,
     padding: 15,
     marginVertical: 10,
     flexDirection: "row",
     justifyContent: "space-around",
     width: "60%",
+    backgroundColor: '#ffffff80'
   },
+  listItemNumber: {
+    color: '#FAF33E',
+    backgroundColor: '#000000'
+  }
 });
 
 export default GameScreen;

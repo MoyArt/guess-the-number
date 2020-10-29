@@ -3,6 +3,7 @@ import {
   View,
   StyleSheet,
   Image,
+  ImageBackground,
   Text,
   Dimensions,
   ScrollView,
@@ -15,26 +16,28 @@ import ColorPallet from "../constants/colorPallet";
 const GameOverScreen = (props) => {
   const { roundsNumber, userNumber, onRestart } = props;
   return (
-    <ScrollView>
-      <View style={styles.screen}>
-        <Title>The Game Is Over</Title>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require("../assets/images/ninjaWin.gif")}
-            style={styles.image}
-            resizeMode="cover"
-          />
-        </View>
-        <View style={styles.textWrapper}>
-          <BodyText style={styles.resultText}>
-            Your Phone needed{" "}
-            <Text style={styles.highlight}>{roundsNumber}</Text> rounds to guess
-            the number: <Text style={styles.highlight}>{userNumber}</Text>
-          </BodyText>
-        </View>
-        <MainButton onPress={onRestart}> New Game </MainButton>
-      </View>
-    </ScrollView>
+    <ImageBackground source={require('../assets/images/rainingBackground.gif')} style={styles.backgroundImage} >
+      <ScrollView>
+        <View style={styles.screen}>
+          <Title style={styles.gameOverText}>The Game Is Over</Title>
+          <View style={styles.imageContainer}>
+            <Image
+              source={require("../assets/images/ninjaWin.gif")}
+              style={styles.image}
+              resizeMode="cover"
+            />
+          </View>
+          <View style={styles.textWrapper}>
+            <BodyText style={styles.resultText}>
+              Your Phone needed{" "}
+              <Text style={styles.highlight}>{roundsNumber}</Text> rounds to guess
+              the number: <Text style={styles.highlight}>{userNumber}</Text>
+            </BodyText>
+          </View>
+          <MainButton onPress={onRestart}> New Game </MainButton>
+        </View>    
+      </ScrollView>
+    </ImageBackground>
   );
 };
 
@@ -44,11 +47,18 @@ const GameOverScreen = (props) => {
  * @param {Object} Object containing the style rules.
  */
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+  },
   screen: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 30,
+  },
+  gameOverText: {
+    color: '#ffffff',
   },
   imageContainer: {
     borderRadius: (Dimensions.get("window").width * 0.7) / 2,
@@ -70,10 +80,14 @@ const styles = StyleSheet.create({
   },
   resultText: {
     textAlign: "center",
+    color: '#ffffff',
     fontSize: Dimensions.get("window").height > 400 ? 20 : 16,
+    backgroundColor: '#00000070',
+    padding: 20,
+    marginBottom: 30,
   },
   highlight: {
-    color: ColorPallet.accent,
+    color: ColorPallet.headerBackground,
     fontFamily: "open-sans-bold",
   },
 });
