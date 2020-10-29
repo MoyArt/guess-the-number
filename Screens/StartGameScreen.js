@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginVertical: 10,
+    color: '#FAF33E',
   },
   inputContainer: {
     width: "80%",

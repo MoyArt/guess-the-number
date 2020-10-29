@@ -15,12 +15,13 @@ const MainButton = props => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: ColorPallet.primary,
+    backgroundColor: ColorPallet.headerBackground,
     paddingVertical: 12,
     paddingHorizontal: 30,
+    borderRadius: 25,
   },
   buttonText: {
-    color: '#ffffff',
+    color: '#000000',
     fontFamily: 'open-sans',
     fontSize: 18,
   },

@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
   },
   confirmedText: {
     fontSize: 18,
+    marginVertical: 20,
+    fontFamily: 'open-sans',
     color: ColorPallet.accent,
   },
 });

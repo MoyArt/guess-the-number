@@ -1,5 +1,6 @@
 export default {
-  primary: '#f7287b',
-  accent: '#c717fc',
-  inputBorderBottomColor: 'gray',
+  primary: '#0D1B2A',
+  accent: '#26D1F0',
+  inputBorderBottomColor: '#77878B',
+  headerBackground: '#FAF33E',
 }
