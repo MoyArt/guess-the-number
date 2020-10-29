@@ -1,16 +1,16 @@
-import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import React from "react";
+import { Text, StyleSheet } from "react-native";
 
-const BodyText = props => {
+const BodyText = (props) => {
   const { children, style } = props;
-  return <Text style={{...styles.bodyText, ...style}}> {children} </Text>;
-}
+  return <Text style={{ ...styles.bodyText, ...style }}> {children} </Text>;
+};
 
 const styles = StyleSheet.create({
   bodyText: {
-    fontFamily: 'open-sans',
-    color: '#666',
-  }
+    fontFamily: "open-sans",
+    color: "#666",
+  },
 });
 
 export default BodyText;
