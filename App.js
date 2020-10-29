@@ -76,7 +76,7 @@ export default function App() {
 
   return (
     <View style={styles.mainWrapper}>
-      <Header title="Power Puff App" />
+      <Header title="Guess the Number" />
       { content }
     </View>
   );
