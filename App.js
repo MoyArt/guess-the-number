@@ -9,7 +9,7 @@ import GameOverScreen from './Screens/GameOverScreen';
 
 /**
 * @name fetchFonts
-* @description Method to fetch custom fonts  
+* @description This method is used to fetch custom fonts
 */
 const fetchFonts = () => {
   return Font.loadAsync({
